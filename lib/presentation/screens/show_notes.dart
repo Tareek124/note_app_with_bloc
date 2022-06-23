@@ -54,7 +54,9 @@ class _ShowNotesState extends State<ShowNotes> {
           if (state is GetAllNotes) {
             showNotesWidgets = ShowNotesWidgets(
                 notes: state.notes.reversed.toList(), context: context);
-            return showNotesWidgets!.buildNotes();
+            return state.notes.isEmpty
+                ? showNotesWidgets!.noNotesText()
+                : showNotesWidgets!.buildNotes();
           } else {
             return const Center(
               child: CircularProgressIndicator(

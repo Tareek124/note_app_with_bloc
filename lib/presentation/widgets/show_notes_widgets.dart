@@ -65,6 +65,7 @@ class ShowNotesWidgets {
         ),
         onDismissed: (direction) {
           BlocProvider.of<NotesCubit>(context!).deleteNote(notes![index].id!);
+          BlocProvider.of<NotesCubit>(context!).getAllNotes();
         },
         child: _buildItem(index),
       ),
@@ -126,6 +127,15 @@ class ShowNotesWidgets {
           },
           icon: const Icon(Icons.edit),
         ),
+      ),
+    );
+  }
+
+  Widget noNotesText() {
+    return const Center(
+      child: Text(
+        "No Notes Created",
+        style: TextStyle(fontFamily: "myFont", fontSize: 17),
       ),
     );
   }
