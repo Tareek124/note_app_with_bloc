@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:note_app_with_bloc/data/model/note_model.dart';
-import 'package:note_app_with_bloc/presentation/widgets/edit_notes_widgets.dart';
+import '../../data/model/note_model.dart';
+import '../widgets/edit_notes_widgets.dart';
 
 class EditNote extends StatefulWidget {
   EditNote({Key? key, required this.noteModel}) : super(key: key);
@@ -39,12 +39,14 @@ class _EditNoteState extends State<EditNote> {
       floatingActionButton: editNotesWidgets.floatingActionButton(),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            editNotesWidgets.textField(isTitle: true),
-            editNotesWidgets.textField(isTitle: false),
-            editNotesWidgets.datePicker(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              editNotesWidgets.textField(isTitle: true),
+              editNotesWidgets.textField(isTitle: false),
+              editNotesWidgets.datePicker(),
+            ],
+          ),
         ),
       ),
     );
